@@ -8,25 +8,28 @@
 
   const dispatch = createEventDispatcher()
 
-  let itemName
-  let rarity
-  let level
-  let isNew
-  let slot
-  let stats
-
   // Determine if this is a gear item (has slot) or inventory item (has menuIdx)
   $: isGearItem = item && item['@_slot'] !== undefined
 
-  $: if (item) {
+  // Initialize values from item
+  let itemName = item['@_name'] || ''
+  let rarity = String(item['@_rarity'] || '0')
+  let level = Number(item['@_level']) || 1
+  let isNew = !isGearItem && item['@_new'] === 'true'
+  let slot = item['@_slot'] || ''
+  let stats = Array.isArray(item.Stats?.stat)
+    ? item.Stats.stat
+    : (item.Stats?.stat ? [item.Stats.stat] : [])
+
+  // Track when we switch to a different item
+  let currentItemIndex = itemIndex
+  $: if (currentItemIndex !== itemIndex) {
+    currentItemIndex = itemIndex
+    // Reset form values when switching items
     itemName = item['@_name'] || ''
-    // Ensure rarity is a string to match select options
     rarity = String(item['@_rarity'] || '0')
-    // Ensure level is a number
     level = Number(item['@_level']) || 1
-    // Check for string 'true' (inventory items only)
     isNew = !isGearItem && item['@_new'] === 'true'
-    // Get slot for gear items
     slot = item['@_slot'] || ''
     stats = Array.isArray(item.Stats?.stat)
       ? item.Stats.stat
@@ -59,7 +62,7 @@
       index: itemIndex,
       item: updatedItem
     })
-    
+
     // Close modal after saving
     dispatch('close')
   }
