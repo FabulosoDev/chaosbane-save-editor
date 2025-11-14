@@ -3,7 +3,7 @@
   import { getRarityColor, getRarityName } from '../lib/rarityHelper.js'
   import { getStatDisplayName, isUnknownStat } from '../lib/statsHelper.js'
   import { getItemDisplayName, isUnknownItemName } from '../lib/itemNamesHelper.js'
-  import { getUIString } from '../lib/localeManager.js'
+  import { getUIString, getSlotName } from '../lib/localeManager.js'
 
   export let item
   export let itemIndex
@@ -544,16 +544,16 @@
       <div class="form-group">
         <label>{getUIString('common.slot')}</label>
         <select bind:value={slot}>
-          <option value="e_Head">{getUIString('slots.e_Head')}</option>
-          <option value="e_Arm">{getUIString('slots.e_Arm')}</option>
-          <option value="e_Chest">{getUIString('slots.e_Chest')}</option>
-          <option value="e_Leg">{getUIString('slots.e_Leg')}</option>
-          <option value="e_Boots">{getUIString('slots.e_Boots')}</option>
-          <option value="e_Weapon_L">{getUIString('slots.e_Weapon_L')}</option>
-          <option value="e_Weapon_R">{getUIString('slots.e_Weapon_R')}</option>
-          <option value="e_Ring_1">{getUIString('slots.e_Ring_1')}</option>
-          <option value="e_Ring_2">{getUIString('slots.e_Ring_2')}</option>
-          <option value="e_Amulet">{getUIString('slots.e_Amulet')}</option>
+          <option value="e_Head">{getSlotName('e_Head')}</option>
+          <option value="e_Arm">{getSlotName('e_Arm')}</option>
+          <option value="e_Chest">{getSlotName('e_Chest')}</option>
+          <option value="e_Leg">{getSlotName('e_Leg')}</option>
+          <option value="e_Boots">{getSlotName('e_Boots')}</option>
+          <option value="e_Weapon_L">{getSlotName('e_Weapon_L')}</option>
+          <option value="e_Weapon_R">{getSlotName('e_Weapon_R')}</option>
+          <option value="e_Ring_1">{getSlotName('e_Ring_1')}</option>
+          <option value="e_Ring_2">{getSlotName('e_Ring_2')}</option>
+          <option value="e_Amulet">{getSlotName('e_Amulet')}</option>
         </select>
       </div>
     {:else}

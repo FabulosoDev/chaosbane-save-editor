@@ -3,7 +3,7 @@
   import { getAvailableStats } from '../lib/statsHelper.js'
   import { getRarityColor, getRarityName } from '../lib/rarityHelper.js'
   import { getItemDisplayName } from '../lib/itemNamesHelper.js'
-  import { getUIString } from '../lib/localeManager.js'
+  import { getUIString, getSlotName } from '../lib/localeManager.js'
   import ItemDetails from './ItemDetails.svelte'
   import Modal from './Modal.svelte'
 
@@ -261,7 +261,7 @@
         <div class="item-name" style="color: {getRarityColor(item['@_rarity'])}">{getItemDisplayName(item['@_name'])}</div>
         <div class="item-meta">
           <span>{getUIString('common.level')}: {item['@_level']}</span>
-          <span>{getUIString('common.slot')}: {item['@_slot']}</span>
+          <span>{getUIString('common.slot')}: {getSlotName(item['@_slot'])}</span>
           <span>{getRarityName(item['@_rarity'])}</span>
         </div>
       </div>

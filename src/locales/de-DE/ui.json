@@ -46,18 +46,6 @@
     "selectStat": "-- Wählen Sie eine Statistik aus --",
     "value": "Wert"
   },
-  "slots": {
-    "e_Head": "Kopf",
-    "e_Arm": "Arme",
-    "e_Chest": "Brust",
-    "e_Leg": "Beine",
-    "e_Boots": "Stiefel",
-    "e_Weapon_L": "Waffe Links",
-    "e_Weapon_R": "Waffe Rechts",
-    "e_Ring_1": "Ring 1",
-    "e_Ring_2": "Ring 2",
-    "e_Amulet": "Amulett"
-  },
   "modal": {
     "closeModal": "Modal schließen"
   }

@@ -51,6 +51,15 @@ export function getRarityName(rarityValue) {
 }
 
 /**
+ * Get translated slot name
+ * @param {string} slotKey - Slot internal key
+ * @returns {string} Translated slot name or key if not found
+ */
+export function getSlotName(slotKey) {
+  return localeData.slots?.[slotKey] || slotKey
+}
+
+/**
  * Get translated UI string
  * @param {string} path - Dot-notation path to UI string (e.g., 'common.save', 'itemDetails.saveChanges')
  * @returns {string} Translated UI string or path if not found
