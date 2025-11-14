@@ -11,6 +11,8 @@
   let isDirty = false
   let fileInput
 
+  const faviconUrl = `${import.meta.env.BASE_URL}favicon.svg`
+
   async function handleFileUpload(event) {
     const file = event.target.files[0]
     if (!file) return
@@ -98,6 +100,15 @@
     font-size: clamp(1.5rem, 5vw, 2rem);
     font-weight: 600;
     letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  :global(h1 .favicon) {
+    height: 1.2em;
+    width: 1.2em;
+    display: inline-block;
   }
 
   .file-info {
@@ -277,7 +288,7 @@
 
 <div class="container">
   <div class="header">
-    <h1>⚔️ {getUIString('app.title')}</h1>
+    <h1><img src={faviconUrl} alt="Icon" class="favicon" /> {getUIString('app.title')}</h1>
     <div class="file-info">
       <span class="file-name" class:loaded={saveData}>
         {#if saveData}{fileName}{:else}{getUIString('app.noFileOpened')}{/if}
