@@ -65,34 +65,6 @@
     }
   }
 
-  .modal-close-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
-    border: none;
-    color: #a0a0a0;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 8px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    border-radius: 6px;
-  }
-
-  .modal-close-btn:hover {
-    color: #ffffff;
-    background-color: #2a2a2a;
-  }
-
-  .modal-close-btn:active {
-    transform: scale(0.95);
-  }
-
   .modal-header {
     display: flex;
     justify-content: space-between;
@@ -157,7 +129,6 @@
     role="presentation"
   >
     <div class="modal-content" role="dialog" aria-modal="true">
-      <button class="modal-close-btn" on:click={handleClose} aria-label={getUIString('modal.closeModal')}>✕</button>
       {#if title}
         <div class="modal-header">
           <h2>{title}</h2>
