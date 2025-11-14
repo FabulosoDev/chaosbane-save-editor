@@ -32,27 +32,36 @@
 
   .modal-backdrop.open {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
   }
 
   @media (min-width: 1024px) {
     .modal-backdrop.open {
-      display: none;
+      display: none !important;
+      visibility: hidden;
+      pointer-events: none;
     }
   }
 
   .modal-content {
     background-color: #1a1a1a;
-    border-radius: 12px 12px 0 0;
-    width: 100%;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
     max-height: 90vh;
-    overflow-y: auto;
-    padding: 40px 20px 20px 20px;
+    padding: 0;
     box-sizing: border-box;
-    animation: slideUp 0.3s ease-out;
-    margin: 0 15px;
+    animation: slideIn 0.3s ease-out;
     position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 1024px) {
+    .modal-content {
+      display: none !important;
+    }
   }
 
   .modal-close-btn {
@@ -127,12 +136,14 @@
     }
   }
 
-  @keyframes slideUp {
+  @keyframes slideIn {
     from {
-      transform: translateY(100%);
+      opacity: 0;
+      transform: scale(0.95);
     }
     to {
-      transform: translateY(0);
+      opacity: 1;
+      transform: scale(1);
     }
   }
 </style>

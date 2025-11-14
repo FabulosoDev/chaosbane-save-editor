@@ -237,8 +237,8 @@
     border-radius: 8px;
     padding: 15px;
     min-height: 400px;
-    overflow-x: auto;
     border: 1px solid #2a2a2a;
+    overflow: hidden;
   }
 
   @media (min-width: 768px) {

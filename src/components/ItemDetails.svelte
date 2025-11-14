@@ -116,15 +116,40 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow: hidden;
+    max-height: calc(100vh - 20px);
+    padding: 10px;
+  }
+
+  @media (min-width: 768px) {
+    .item-details {
+      padding: 0;
+    }
+  }
+
+  .scrollable-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    padding-right: 5px;
+    flex: 1;
+    min-height: 0;
   }
 
   .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #1a1a1a;
+    padding: 0 0 10px 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-bottom: 10px;
     gap: 10px;
+    border-bottom: 3px solid #2a2a2a;
   }
 
   @media (min-width: 768px) {
@@ -132,39 +157,102 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .header-actions {
+      width: auto;
+      justify-content: flex-start;
+      order: 2;
+    }
+  }
+
+  .header-actions-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .header-actions-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: auto;
   }
 
   h2 {
     margin: 0;
     color: var(--item-color, #4a9eff);
     word-break: break-word;
-    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    font-size: clamp(1rem, 4vw, 1.4rem);
     width: 100%;
     font-weight: 600;
+    flex: 1;
   }
 
   @media (min-width: 768px) {
     h2 {
       width: auto;
+      flex: 1;
+      order: 1;
     }
+  }
+
+  .save-header-btn {
+    background-color: #4a9eff;
+    border: 1px solid #4a9eff;
+    padding: 8px 16px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .save-header-btn:hover {
+    background-color: #2a7ed8;
+    border-color: #2a7ed8;
+  }
+
+  .save-header-btn:active {
+    transform: scale(0.95);
   }
 
   .delete-btn {
     background-color: transparent;
     border: 1px solid #ff5555;
-    padding: 8px;
-    width: 40px;
+    padding: 8px 16px;
     height: 40px;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 6px;
     color: #ff5555;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     transition: all 0.2s;
     flex-shrink: 0;
+    font-weight: 500;
+    white-space: nowrap;
   }
 
   .delete-btn:hover {
@@ -175,6 +263,27 @@
 
   .delete-btn:active {
     transform: scale(0.95);
+  }
+
+  .close-btn {
+    background-color: transparent;
+    border: 0px;
+    height: 40px;
+    font-size: 32px;
+    color: #999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 768px) {
+    .close-btn {
+      display: none;
+    }
   }
 
   .section {
@@ -302,25 +411,15 @@
     transform: scale(0.95);
   }
 
-  .actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  @media (min-width: 768px) {
-    .actions {
-      flex-direction: row;
-    }
-  }
-
-  .save-btn,
   .add-stat-btn {
+    background-color: #4a9eff;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: clamp(12px, 3vw, 14px);
     padding: 12px 16px;
     border: none;
     border-radius: 6px;
-    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -328,31 +427,6 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-  }
-
-  .save-btn {
-    background-color: #4a9eff;
-    color: #fff;
-    flex: 1;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .save-btn:hover {
-    background-color: #2a7ed8;
-    transform: translateY(-1px);
-  }
-
-  .save-btn:active {
-    transform: translateY(0);
-  }
-
-  .add-stat-btn {
-    background-color: #4a9eff;
-    color: #fff;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: clamp(12px, 3vw, 14px);
   }
 
   @media (min-width: 768px) {
@@ -373,11 +447,25 @@
 
 <div class="item-details">
   <div class="header">
+    <div class="header-actions">
+      <div class="header-actions-left">
+        <button class="save-header-btn" on:click={handleUpdate} title="Save changes" aria-label="Save changes">
+          <i class="fas fa-save"></i> Save
+        </button>
+        <button class="delete-btn" on:click={() => dispatch('delete')} title="Delete this item" aria-label="Delete item">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </div>
+      <div class="header-actions-right">
+        <button class="close-btn" on:click={() => dispatch('close')} title="Close editor" aria-label="Close editor">
+          <i class="fas fa-square-xmark"></i>
+        </button>
+      </div>
+    </div>
     <h2 style="--item-color: {itemColor}">{itemName}</h2>
-    <button class="delete-btn" on:click={() => dispatch('delete')} title="Delete this item" aria-label="Delete item">
-      ⨯
-    </button>
   </div>
+
+  <div class="scrollable-content">
 
   <div class="section">
     <div class="section-title">Basic Information</div>
@@ -456,15 +544,14 @@
             }}
             step="0.01"
           />
-          <button class="remove-btn" on:click={() => removeStat(idx)} title="Remove this stat" aria-label="Remove stat">✕</button>
+          <button class="remove-btn" on:click={() => removeStat(idx)} title="Remove this stat" aria-label="Remove stat">
+            <i class="fas fa-trash"></i>
+          </button>
         </div>
       {/each}
     </div>
 
     <button class="add-stat-btn" on:click={addStat}>+ Add Stat</button>
   </div>
-
-  <div class="actions">
-    <button class="save-btn" on:click={handleUpdate}>Save Changes</button>
   </div>
 </div>
