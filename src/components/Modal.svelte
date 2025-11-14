@@ -50,7 +50,7 @@
     border-radius: 12px;
     width: 90%;
     max-width: 600px;
-    max-height: 90vh;
+    max-height: 85vh;
     padding: 0;
     box-sizing: border-box;
     animation: slideIn 0.3s ease-out;
