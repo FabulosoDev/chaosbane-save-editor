@@ -35,10 +35,10 @@ export function loadSaveFile(xmlString) {
 export function saveSaveFile(saveData) {
   const builder = new XMLBuilder(builderOptions)
   let xml = builder.build({ character: saveData })
-  
+
   // Fix attributes without values - restore the ="true" for attributes like "new"
   xml = xml.replace(/(\s)(new|Rewarded|triggered|talkedTo)(\s|\/?>)/g, '$1$2="true"$3')
-  
+
   return formatXML(xml)
 }
 
@@ -51,17 +51,17 @@ function formatXML(xml) {
   let formatted = ''
   let indent = 0
   const indentStr = '    ' // 4 spaces
-  
+
   // First, convert closing tags to self-closing tags for empty elements
   xml = xml.replace(/<([a-zA-Z][a-zA-Z0-9_-]*)((?:\s+[a-zA-Z_:][-a-zA-Z0-9_:\.]*(?:\s*=\s*(?:"[^"]*"|'[^']*'))?)*)\s*><\/\1\s*>/g, '<$1$2/>')
-  
+
   // Now format with proper indentation
   const tokens = xml.match(/<[^>]+>|[^<]+/g) || []
-  
+
   tokens.forEach(token => {
     token = token.trim()
     if (!token) return
-    
+
     if (token.startsWith('</')) {
       // Closing tag
       indent = Math.max(0, indent - 1)
@@ -77,7 +77,7 @@ function formatXML(xml) {
       }
     }
   })
-  
+
   return formatted.trim() + '\n'
 }
 
@@ -90,7 +90,7 @@ export function getInventoryItems(saveData) {
   if (!saveData.inventory || !saveData.inventory.item) {
     return []
   }
-  
+
   const items = saveData.inventory.item
   return Array.isArray(items) ? items : [items]
 }
@@ -117,7 +117,7 @@ export function getGearPreset(saveData, presetIndex) {
   if (!saveData.gear || !saveData.gear.preset) {
     return null
   }
-  
+
   const presets = Array.isArray(saveData.gear.preset) ? saveData.gear.preset : [saveData.gear.preset]
   return presets.find(p => p['@_index'] === presetIndex)
 }
@@ -132,16 +132,16 @@ export function setGearPreset(saveData, presetIndex, gearData) {
   if (!saveData.gear) {
     saveData.gear = { preset: [] }
   }
-  
+
   const presets = Array.isArray(saveData.gear.preset) ? saveData.gear.preset : [saveData.gear.preset]
   const index = presets.findIndex(p => p['@_index'] === presetIndex)
-  
+
   if (index >= 0) {
     presets[index] = gearData
   } else {
     presets.push(gearData)
   }
-  
+
   saveData.gear.preset = presets
 }
 

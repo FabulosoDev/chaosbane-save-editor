@@ -2,6 +2,8 @@
   import { createEventDispatcher } from 'svelte'
   import { getAvailableStats } from '../lib/statsHelper.js'
   import { getRarityColor, getRarityName } from '../lib/rarityHelper.js'
+  import { getItemDisplayName } from '../lib/itemNamesHelper.js'
+  import { getUIString } from '../lib/localeManager.js'
   import ItemDetails from './ItemDetails.svelte'
   import Modal from './Modal.svelte'
 
@@ -44,7 +46,7 @@
   }
 
   function handleItemDelete(index) {
-    if (confirm('Delete this item?')) {
+    if (confirm(getUIString('itemDetails.deleteItemConfirm'))) {
       gearItems.splice(index, 1)
       gearItems = gearItems
       updateGearPreset()
@@ -236,12 +238,12 @@
 
 <div class="gear-editor">
   <div class="item-list">
-    <button class="add-button" on:click={handleAddItem}>+ Add Item</button>
+    <button class="add-button" on:click={handleAddItem}>+ {getUIString('common.addItem')}</button>
 
     <div class="search-bar">
       <input
         type="text"
-        placeholder="Search items..."
+        placeholder={getUIString('common.searchItems')}
         bind:value={searchQuery}
       />
     </div>
@@ -256,17 +258,17 @@
         role="button"
         tabindex="0"
       >
-        <div class="item-name" style="color: {getRarityColor(item['@_rarity'])}">{item['@_name']}</div>
+        <div class="item-name" style="color: {getRarityColor(item['@_rarity'])}">{getItemDisplayName(item['@_name'])}</div>
         <div class="item-meta">
-          <span>Level: {item['@_level']}</span>
-          <span>Slot: {item['@_slot']}</span>
+          <span>{getUIString('common.level')}: {item['@_level']}</span>
+          <span>{getUIString('common.slot')}: {item['@_slot']}</span>
           <span>{getRarityName(item['@_rarity'])}</span>
         </div>
       </div>
     {/each}
 
     {#if filteredItems.length === 0}
-      <div class="empty-state">No items found</div>
+      <div class="empty-state">{getUIString('common.noItemsFound')}</div>
     {/if}
   </div>
 
@@ -280,7 +282,7 @@
         on:delete={() => handleItemDelete(selectedItemIndex)}
       />
     {:else}
-      <div class="empty-state">Select an item to edit</div>
+      <div class="empty-state">{getUIString('common.selectItemToEdit')}</div>
     {/if}
   </div>
 </div>

@@ -1,15 +1,16 @@
 <script>
   import { createEventDispatcher } from 'svelte'
-  
+  import { getUIString } from '../lib/localeManager.js'
+
   export let isOpen = false
   export let title = ''
-  
+
   const dispatch = createEventDispatcher()
-  
+
   function handleClose() {
     dispatch('close')
   }
-  
+
   function handleBackdropClick(e) {
     if (e.target === e.currentTarget) {
       handleClose()
@@ -149,18 +150,18 @@
 </style>
 
 {#if isOpen}
-  <div 
-    class="modal-backdrop open" 
+  <div
+    class="modal-backdrop open"
     on:click={handleBackdropClick}
     on:keydown={(e) => e.key === 'Escape' && handleClose()}
     role="presentation"
   >
     <div class="modal-content" role="dialog" aria-modal="true">
-      <button class="modal-close-btn" on:click={handleClose} aria-label="Close modal">✕</button>
+      <button class="modal-close-btn" on:click={handleClose} aria-label={getUIString('modal.closeModal')}>✕</button>
       {#if title}
         <div class="modal-header">
           <h2>{title}</h2>
-          <button class="close-btn" on:click={handleClose} aria-label="Close modal">✕</button>
+          <button class="close-btn" on:click={handleClose} aria-label={getUIString('modal.closeModal')}>✕</button>
         </div>
       {/if}
       <slot />

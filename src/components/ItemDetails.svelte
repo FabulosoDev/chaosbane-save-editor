@@ -1,6 +1,9 @@
 <script>
   import { createEventDispatcher } from 'svelte'
   import { getRarityColor, getRarityName } from '../lib/rarityHelper.js'
+  import { getStatDisplayName, isUnknownStat } from '../lib/statsHelper.js'
+  import { getItemDisplayName, isUnknownItemName } from '../lib/itemNamesHelper.js'
+  import { getUIString } from '../lib/localeManager.js'
 
   export let item
   export let itemIndex
@@ -208,6 +211,17 @@
     }
   }
 
+  .unknown-item-badge {
+    display: inline-block;
+    background-color: #ff9800;
+    color: #1a1a1a;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 11px;
+    margin-top: 6px;
+  }
+
   .save-header-btn {
     background-color: #4a9eff;
     border: 1px solid #4a9eff;
@@ -376,7 +390,37 @@
     }
   }
 
-  .stat-entry input {
+  .stat-entry.unknown-stat {
+    border: 2px solid #ff9800;
+    background-color: #2a1a0a;
+  }
+
+  .unknown-stat-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background-color: #3a2010;
+    border-radius: 4px;
+    border: 1px solid #ff9800;
+    font-size: 12px;
+  }
+
+  .unknown-badge {
+    display: inline-block;
+    background-color: #ff9800;
+    color: #1a1a1a;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 11px;
+    margin-left: auto;
+  }
+
+  select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #0f0f0f;
     padding: 8px;
     font-size: 13px;
     width: 100%;
@@ -449,39 +493,44 @@
   <div class="header">
     <div class="header-actions">
       <div class="header-actions-left">
-        <button class="save-header-btn" on:click={handleUpdate} title="Save changes" aria-label="Save changes">
-          <i class="fas fa-save"></i> Save
+        <button class="save-header-btn" on:click={handleUpdate} title={getUIString('itemDetails.saveChanges')} aria-label={getUIString('itemDetails.saveChanges')}>
+          <i class="fas fa-save"></i> {getUIString('common.save')}
         </button>
-        <button class="delete-btn" on:click={() => dispatch('delete')} title="Delete this item" aria-label="Delete item">
-          <i class="fas fa-trash"></i> Delete
+        <button class="delete-btn" on:click={() => dispatch('delete')} title={getUIString('itemDetails.deleteThisItem')} aria-label={getUIString('itemDetails.deleteThisItem')}>
+          <i class="fas fa-trash"></i> {getUIString('common.delete')}
         </button>
       </div>
       <div class="header-actions-right">
-        <button class="close-btn" on:click={() => dispatch('close')} title="Close editor" aria-label="Close editor">
+        <button class="close-btn" on:click={() => dispatch('close')} title={getUIString('itemDetails.closeEditor')} aria-label={getUIString('itemDetails.closeEditor')}>
           <i class="fas fa-square-xmark"></i>
         </button>
       </div>
     </div>
-    <h2 style="--item-color: {itemColor}">{itemName}</h2>
+    <div>
+      <h2 style="--item-color: {itemColor}">{getItemDisplayName(itemName)}</h2>
+      {#if isUnknownItemName(itemName)}
+        <div class="unknown-item-badge">{getUIString('common.unknownItem')}</div>
+      {/if}
+    </div>
   </div>
 
   <div class="scrollable-content">
 
   <div class="section">
-    <div class="section-title">Basic Information</div>
+    <div class="section-title">{getUIString('common.basicInformation')}</div>
 
     <div class="form-group">
-      <label>Item Name</label>
+      <label>{getUIString('common.itemName')}</label>
       <input type="text" bind:value={itemName} />
     </div>
 
     <div class="form-group">
-      <label>Level</label>
+      <label>{getUIString('common.level')}</label>
       <input type="number" bind:value={level} min="1" />
     </div>
 
     <div class="form-group">
-      <label>Rarity</label>
+      <label>{getUIString('common.rarity')}</label>
       <select bind:value={rarity}>
         <option value="0">Common</option>
         <option value="1">Rare</option>
@@ -493,46 +542,54 @@
 
     {#if isGearItem}
       <div class="form-group">
-        <label>Slot</label>
+        <label>{getUIString('common.slot')}</label>
         <select bind:value={slot}>
-          <option value="e_Head">Head</option>
-          <option value="e_Arm">Arms</option>
-          <option value="e_Chest">Chest</option>
-          <option value="e_Leg">Legs</option>
-          <option value="e_Boots">Boots</option>
-          <option value="e_Weapon_L">Weapon Left</option>
-          <option value="e_Weapon_R">Weapon Right</option>
-          <option value="e_Ring_1">Ring 1</option>
-          <option value="e_Ring_2">Ring 2</option>
-          <option value="e_Amulet">Amulet</option>
+          <option value="e_Head">{getUIString('slots.e_Head')}</option>
+          <option value="e_Arm">{getUIString('slots.e_Arm')}</option>
+          <option value="e_Chest">{getUIString('slots.e_Chest')}</option>
+          <option value="e_Leg">{getUIString('slots.e_Leg')}</option>
+          <option value="e_Boots">{getUIString('slots.e_Boots')}</option>
+          <option value="e_Weapon_L">{getUIString('slots.e_Weapon_L')}</option>
+          <option value="e_Weapon_R">{getUIString('slots.e_Weapon_R')}</option>
+          <option value="e_Ring_1">{getUIString('slots.e_Ring_1')}</option>
+          <option value="e_Ring_2">{getUIString('slots.e_Ring_2')}</option>
+          <option value="e_Amulet">{getUIString('slots.e_Amulet')}</option>
         </select>
       </div>
     {:else}
       <div class="form-group checkbox-group">
         <input type="checkbox" id="new-flag" bind:checked={isNew} />
-        <label for="new-flag">Mark as New</label>
+        <label for="new-flag">{getUIString('common.markAsNew')}</label>
       </div>
     {/if}
   </div>
 
   <div class="section">
-    <div class="section-title">Stats</div>
+    <div class="section-title">{getUIString('common.stats')}</div>
 
     <div class="stats-list">
       {#each stats as stat, idx (idx)}
-        <div class="stat-entry">
+        <div class="stat-entry" class:unknown-stat={isUnknownStat(stat['@_stat'])}>
           <select
             value={stat['@_stat']}
             on:change={(e) => handleStatChange(idx, e.target.value, stat['@_value'])}
+            disabled={isUnknownStat(stat['@_stat'])}
+            title={isUnknownStat(stat['@_stat']) ? getUIString('itemDetails.unknownStatTooltip') : ''}
           >
-            <option value="">-- Select a stat --</option>
+            <option value="">{getUIString('itemDetails.selectStat')}</option>
             {#each availableStats as statName}
-              <option value={statName}>{statName}</option>
+              <option value={statName}>{getStatDisplayName(statName)}</option>
             {/each}
           </select>
+          {#if isUnknownStat(stat['@_stat'])}
+            <div class="unknown-stat-label">
+              <span>{stat['@_stat']}</span>
+              <span class="unknown-badge">{getUIString('common.unknown')}</span>
+            </div>
+          {/if}
           <input
             type="number"
-            placeholder="Value"
+            placeholder={getUIString('itemDetails.value')}
             value={formatDecimalValue(stat['@_value'])}
             on:change={(e) => handleStatChange(idx, stat['@_stat'], e.target.value)}
             on:blur={(e) => {
@@ -544,14 +601,14 @@
             }}
             step="0.01"
           />
-          <button class="remove-btn" on:click={() => removeStat(idx)} title="Remove this stat" aria-label="Remove stat">
+          <button class="remove-btn" on:click={() => removeStat(idx)} title={getUIString('itemDetails.removeThisStat')} aria-label={getUIString('itemDetails.removeThisStat')}>
             <i class="fas fa-trash"></i>
           </button>
         </div>
       {/each}
     </div>
 
-    <button class="add-stat-btn" on:click={addStat}>+ Add Stat</button>
+    <button class="add-stat-btn" on:click={addStat}>+ {getUIString('common.addStat')}</button>
   </div>
   </div>
 </div>

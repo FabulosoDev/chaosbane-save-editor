@@ -2,7 +2,8 @@
   import InventoryEditor from './components/InventoryEditor.svelte'
   import GearEditor from './components/GearEditor.svelte'
   import { loadSaveFile, saveSaveFile } from './lib/saveGameManager.js'
-  
+  import { getUIString } from './lib/localeManager.js'
+
   let activeTab = 'inventory'
   let activeGearPreset = 0
   let saveData = null
@@ -13,14 +14,14 @@
   async function handleFileUpload(event) {
     const file = event.target.files[0]
     if (!file) return
-    
+
     try {
       const text = await file.text()
       saveData = loadSaveFile(text)
       fileName = file.name
       isDirty = false
     } catch (error) {
-      alert('Error loading save file: ' + error.message)
+      alert(getUIString('app.openError') + ': ' + error.message)
     }
   }
 
@@ -30,10 +31,10 @@
 
   function handleDownload() {
     if (!saveData) {
-      alert('No save file loaded')
+      alert(getUIString('app.noFileOpened'))
       return
     }
-    
+
     try {
       const xml = saveSaveFile(saveData)
       const blob = new Blob([xml], { type: 'text/xml' })
@@ -45,7 +46,7 @@
       URL.revokeObjectURL(url)
       isDirty = false
     } catch (error) {
-      alert('Error saving file: ' + error.message)
+      alert(getUIString('app.saveError') + ': ' + error.message)
     }
   }
 
@@ -248,6 +249,7 @@
   }
 
   .empty-state {
+    font-size: 1.4rem;
     text-align: center;
     padding: 60px 20px;
     color: #666;
@@ -275,14 +277,16 @@
 
 <div class="container">
   <div class="header">
-    <h1>⚔️ Chaosbane Save Editor</h1>
+    <h1>⚔️ {getUIString('app.title')}</h1>
     <div class="file-info">
       <span class="file-name" class:loaded={saveData}>
-        {#if saveData}{fileName}{:else}No file loaded{/if}
+        {#if saveData}{fileName}{:else}{getUIString('app.noFileOpened')}{/if}
         {#if isDirty}<span class="dirty-indicator" title="Unsaved changes"></span>{/if}
       </span>
       <div class="file-buttons">
-        <button on:click={triggerFileDialog}>Load Save File</button>
+        <button on:click={triggerFileDialog}>
+          <i class="fas fa-folder-open"></i> {getUIString('app.openFile')}
+        </button>
         <input
           type="file"
           accept=".dat,.xml"
@@ -291,7 +295,7 @@
           style="display: none;"
         />
         <button class="secondary" disabled={!saveData} on:click={handleDownload}>
-          Download Save File
+          <i class="fas fa-floppy-disk"></i> {getUIString('app.download')}
         </button>
       </div>
     </div>
@@ -304,35 +308,35 @@
         class:active={activeTab === 'inventory'}
         on:click={() => (activeTab = 'inventory')}
       >
-        Inventory
+        {getUIString('tabs.inventory')}
       </button>
       <button
         class="tab-button"
         class:active={activeTab === 'gear' && activeGearPreset === 0}
         on:click={() => selectGearPresetTab(0)}
       >
-        Gear Preset 0
+        {getUIString('tabs.gear0')}
       </button>
       <button
         class="tab-button"
         class:active={activeTab === 'gear' && activeGearPreset === 1}
         on:click={() => selectGearPresetTab(1)}
       >
-        Gear Preset 1
+        {getUIString('tabs.gear1')}
       </button>
       <button
         class="tab-button"
         class:active={activeTab === 'gear' && activeGearPreset === 2}
         on:click={() => selectGearPresetTab(2)}
       >
-        Gear Preset 2
+        {getUIString('tabs.gear2')}
       </button>
       <button
         class="tab-button"
         class:active={activeTab === 'gear' && activeGearPreset === 3}
         on:click={() => selectGearPresetTab(3)}
       >
-        Gear Preset 3
+        {getUIString('tabs.gear3')}
       </button>
     </div>
 
@@ -345,7 +349,7 @@
     </div>
   {:else}
     <div class="empty-state">
-      <p>👆 Load a save file to get started</p>
+      <p><i class="fas fa-folder-open"></i> {getUIString('app.openInstructions')}</p>
     </div>
   {/if}
 </div>

@@ -3,15 +3,12 @@
  * @param {string|number} rarityValue - Rarity value (0-4)
  * @returns {string} Rarity name
  */
+
+import { getRarityName as getLocalizedRarityName } from './localeManager.js'
+
 export function getRarityName(rarityValue) {
-  const rarityNames = {
-    '0': 'Common',
-    '1': 'Rare',
-    '2': 'Legendary',
-    '3': 'Heroic',
-    '4': 'Heroic (Set)'
-  }
-  return rarityNames[String(rarityValue)] || 'Unknown'
+  const localizedName = getLocalizedRarityName(rarityValue)
+  return localizedName && localizedName !== 'Unknown' ? localizedName : rarityValue.toString()
 }
 
 /**

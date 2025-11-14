@@ -1,0 +1,18 @@
+{
+  "Armor": "Rüstung",
+  "ArmorReductionTarget": "Rüstungsreduktion Ziel",
+  "Char_BonusRarity": "Seltenheitsbonus",
+  "CooldownReduction": "Abklingzeitreduktion",
+  "CriticHitBonus": "Kritischer Treffer Bonus",
+  "CriticHitChance": "Kritische Trefferchance",
+  "Damage": "Schaden",
+  "Damage_DOT": "Schaden über Zeit",
+  "Damage_DOT_Resistance": "DoT-Resistenz",
+  "DamageDoneConvertedToLife": "Schaden in Leben",
+  "LifeRegenerationPerSecond": "Lebensregeneration",
+  "MaximumLife": "Maximales Leben",
+  "MaximumStamina": "Maximale Ausdauer",
+  "MovementSpeed_Multiplier": "Bewegungsgeschwindigkeit",
+  "StaminaCostReduction": "Ausdauerkosten-Reduktion",
+  "Thorn_Damage": "Dornen-Schaden"
+}

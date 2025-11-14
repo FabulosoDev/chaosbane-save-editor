@@ -1,0 +1,64 @@
+{
+  "app": {
+    "title": "Chaosbane Save Editor",
+    "openFile": "Open Save File",
+    "download": "Download Save",
+    "noFileOpened": "No file opened",
+    "openError": "Error opening save file",
+    "saveError": "Error while saving",
+    "openInstructions": "Open a save file to get started"
+  },
+  "tabs": {
+    "inventory": "Inventory",
+    "gear": "Gear",
+    "gear0": "Gear Preset 0",
+    "gear1": "Gear Preset 1",
+    "gear2": "Gear Preset 2",
+    "gear3": "Gear Preset 3"
+  },
+  "common": {
+    "save": "Save",
+    "delete": "Delete",
+    "close": "Close",
+    "addItem": "Add Item",
+    "addStat": "Add Stat",
+    "remove": "Remove",
+    "level": "Level",
+    "rarity": "Rarity",
+    "itemName": "Item Name",
+    "slot": "Slot",
+    "stats": "Stats",
+    "basicInformation": "Basic Information",
+    "markAsNew": "Mark as New",
+    "unknown": "Unknown",
+    "unknownItem": "Unknown Item",
+    "searchItems": "Search items...",
+    "noItemsFound": "No items found",
+    "selectItemToEdit": "Select an item to edit"
+  },
+  "itemDetails": {
+    "saveChanges": "Save changes",
+    "deleteThisItem": "Delete this item",
+    "closeEditor": "Close editor",
+    "removeThisStat": "Remove this stat",
+    "deleteItemConfirm": "Delete this item?",
+    "unknownStatTooltip": "Unknown stat",
+    "selectStat": "-- Select a stat --",
+    "value": "Value"
+  },
+  "slots": {
+    "e_Head": "Head",
+    "e_Arm": "Arms",
+    "e_Chest": "Chest",
+    "e_Leg": "Legs",
+    "e_Boots": "Boots",
+    "e_Weapon_L": "Weapon Left",
+    "e_Weapon_R": "Weapon Right",
+    "e_Ring_1": "Ring 1",
+    "e_Ring_2": "Ring 2",
+    "e_Amulet": "Amulet"
+  },
+  "modal": {
+    "closeModal": "Close modal"
+  }
+}

@@ -1,30 +1,29 @@
-/**
- * Hardcoded list of all available stats in Warhammer Chaosbane
- * Extracted from save.dat file
- */
-export const AVAILABLE_STATS = [
-  'Armor',
-  'ArmorReductionTarget',
-  'Char_BonusRarity',
-  'CooldownReduction',
-  'CriticHitBonus',
-  'CriticHitChance',
-  'Damage',
-  'Damage_DOT',
-  'Damage_DOT_Resistance',
-  'DamageDoneConvertedToLife',
-  'LifeRegenerationPerSecond',
-  'MaximumLife',
-  'MaximumStamina',
-  'MovementSpeed_Multiplier',
-  'StaminaCostReduction',
-  'Thorn_Damage',
-]
+import enUSStats from '../locales/en-US/stats.json'
+import { getStatName as getLocalizedStatName } from './localeManager.js'
 
 /**
- * Get all available stats
+ * Get all available stats from en-US locale
  * @returns {array} Sorted array of stat names
  */
 export function getAvailableStats() {
-  return AVAILABLE_STATS
+  return Object.keys(enUSStats).sort()
+}
+
+/**
+ * Get display name for a stat (uses locale if available, defaults to en-US)
+ * @param {string} statKey - Stat internal name
+ * @returns {string} Display name for the stat
+ */
+export function getStatDisplayName(statKey) {
+  const localizedName = getLocalizedStatName(statKey)
+  return localizedName && localizedName !== statKey ? localizedName : statKey
+}
+
+/**
+ * Check if a stat is unknown (not in en-US stats)
+ * @param {string} statKey - Stat internal name
+ * @returns {boolean} True if stat is unknown
+ */
+export function isUnknownStat(statKey) {
+  return !Object.keys(enUSStats).includes(statKey)
 }

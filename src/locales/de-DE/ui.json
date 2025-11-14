@@ -1,0 +1,64 @@
+{
+  "app": {
+    "title": "Chaosbane Speichereditor",
+    "openFile": "Speicherdatei öffnen",
+    "download": "Speichern herunterladen",
+    "noFileOpened": "Keine Datei geöffnet",
+    "openError": "Fehler beim Laden der Speicherdatei",
+    "saveError": "Fehler beim Speichern",
+    "openInstructions": "Öffnen Sie eine Speicherdatei, um zu beginnen"
+  },
+  "tabs": {
+    "inventory": "Inventar",
+    "gear": "Ausrüstung",
+    "gear0": "Ausrüstung Voreinstellung 0",
+    "gear1": "Ausrüstung Voreinstellung 1",
+    "gear2": "Ausrüstung Voreinstellung 2",
+    "gear3": "Ausrüstung Voreinstellung 3"
+  },
+  "common": {
+    "save": "Speichern",
+    "delete": "Löschen",
+    "close": "Schließen",
+    "addItem": "Element hinzufügen",
+    "addStat": "Statistik hinzufügen",
+    "remove": "Entfernen",
+    "level": "Stufe",
+    "rarity": "Seltenheit",
+    "itemName": "Elementname",
+    "slot": "Slot",
+    "stats": "Statistiken",
+    "basicInformation": "Basisinformationen",
+    "markAsNew": "Als neu markieren",
+    "unknown": "Unbekannt",
+    "unknownItem": "Unbekanntes Element",
+    "searchItems": "Elemente durchsuchen...",
+    "noItemsFound": "Keine Elemente gefunden",
+    "selectItemToEdit": "Wählen Sie ein Element zum Bearbeiten"
+  },
+  "itemDetails": {
+    "saveChanges": "Änderungen speichern",
+    "deleteThisItem": "Dieses Element löschen",
+    "closeEditor": "Editor schließen",
+    "removeThisStat": "Diese Statistik entfernen",
+    "deleteItemConfirm": "Dieses Element löschen?",
+    "unknownStatTooltip": "Unbekannte Statistik",
+    "selectStat": "-- Wählen Sie eine Statistik aus --",
+    "value": "Wert"
+  },
+  "slots": {
+    "e_Head": "Kopf",
+    "e_Arm": "Arme",
+    "e_Chest": "Brust",
+    "e_Leg": "Beine",
+    "e_Boots": "Stiefel",
+    "e_Weapon_L": "Waffe Links",
+    "e_Weapon_R": "Waffe Rechts",
+    "e_Ring_1": "Ring 1",
+    "e_Ring_2": "Ring 2",
+    "e_Amulet": "Amulett"
+  },
+  "modal": {
+    "closeModal": "Modal schließen"
+  }
+}
