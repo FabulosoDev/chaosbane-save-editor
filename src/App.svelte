@@ -353,9 +353,9 @@
 
     <div class="content">
       {#if activeTab === 'inventory'}
-        <InventoryEditor data={saveData} on:change={markDirty} />
+        <InventoryEditor data={saveData} archetype={saveData.archetype?.['@_ID']} on:change={markDirty} />
       {:else if activeTab === 'gear'}
-        <GearEditor data={saveData} selectedPreset={activeGearPreset} on:change={markDirty} />
+        <GearEditor data={saveData} archetype={saveData.archetype?.['@_ID']} selectedPreset={activeGearPreset} on:change={markDirty} />
       {/if}
     </div>
   {:else}

@@ -8,6 +8,7 @@
   import Modal from './Modal.svelte'
 
   export let data
+  export let archetype
 
   let items = getInventoryItems(data)
   let selectedItemIndex = null
@@ -244,7 +245,7 @@
         role="button"
         tabindex="0"
       >
-        <div class="item-name" style="color: {getRarityColor(item['@_rarity'])}">{getItemDisplayName(item['@_name'])}</div>
+        <div class="item-name" style="color: {getRarityColor(item['@_rarity'])}">{getItemDisplayName(item['@_name'], archetype)}</div>
         <div class="item-meta">
           <span>{getUIString('common.level')}: {item['@_level']}</span>
           <span>{getRarityName(item['@_rarity'])}</span>
@@ -263,6 +264,7 @@
         item={items[selectedItemIndex]}
         itemIndex={selectedItemIndex}
         {availableStats}
+        {archetype}
         on:update={handleItemUpdate}
         on:delete={() => handleItemDelete(selectedItemIndex)}
       />
@@ -281,6 +283,7 @@
       item={items[selectedItemIndex]}
       itemIndex={selectedItemIndex}
       {availableStats}
+      {archetype}
       on:update={handleItemUpdate}
       on:delete={() => handleItemDelete(selectedItemIndex)}
       on:close={() => showDetailsModal = false}

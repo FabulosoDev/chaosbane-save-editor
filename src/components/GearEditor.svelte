@@ -9,6 +9,7 @@
 
   export let data
   export let selectedPreset = 0
+  export let archetype
 
   const dispatch = createEventDispatcher()
 
@@ -258,7 +259,7 @@
         role="button"
         tabindex="0"
       >
-        <div class="item-name" style="color: {getRarityColor(item['@_rarity'])}">{getItemDisplayName(item['@_name'])}</div>
+        <div class="item-name" style="color: {getRarityColor(item['@_rarity'])}">{getItemDisplayName(item['@_name'], archetype)}</div>
         <div class="item-meta">
           <span>{getUIString('common.level')}: {item['@_level']}</span>
           <span>{getUIString('common.slot')}: {getSlotName(item['@_slot'])}</span>
@@ -278,6 +279,7 @@
         item={gearItems[selectedItemIndex]}
         itemIndex={selectedItemIndex}
         {availableStats}
+        {archetype}
         on:update={handleItemUpdate}
         on:delete={() => handleItemDelete(selectedItemIndex)}
       />
@@ -296,6 +298,7 @@
       item={gearItems[selectedItemIndex]}
       itemIndex={selectedItemIndex}
       {availableStats}
+      {archetype}
       on:update={handleItemUpdate}
       on:delete={() => handleItemDelete(selectedItemIndex)}
       on:close={() => showDetailsModal = false}

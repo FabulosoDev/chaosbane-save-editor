@@ -24,11 +24,21 @@ export function getLocale() {
 }
 
 /**
- * Get translated item name
+ * Get translated item name based on archetype
  * @param {string} itemKey - Item internal key
+ * @param {string} archetype - Archetype (e.g., 'SLAYER_DWARF')
  * @returns {string} Translated item name or key if not found
  */
-export function getItemName(itemKey) {
+export function getItemName(itemKey, archetype) {
+  // If archetype is provided, look in archetype-specific section first
+  if (archetype) {
+    const archetypeItems = localeData.items?.[archetype]
+    if (archetypeItems && archetypeItems[itemKey]) {
+      return archetypeItems[itemKey]
+    }
+  }
+  
+  // Fallback to root level (for backward compatibility)
   return localeData.items?.[itemKey] || itemKey
 }
 

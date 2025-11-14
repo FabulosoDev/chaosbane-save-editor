@@ -8,6 +8,7 @@
   export let item
   export let itemIndex
   export let availableStats = []
+  export let archetype
 
   const dispatch = createEventDispatcher()
 
@@ -507,8 +508,8 @@
       </div>
     </div>
     <div>
-      <h2 style="--item-color: {itemColor}">{getItemDisplayName(itemName)}</h2>
-      {#if isUnknownItemName(itemName)}
+      <h2 style="--item-color: {itemColor}">{getItemDisplayName(itemName, archetype)}</h2>
+      {#if isUnknownItemName(itemName, archetype)}
         <div class="unknown-item-badge">{getUIString('common.unknownItem')}</div>
       {/if}
     </div>
