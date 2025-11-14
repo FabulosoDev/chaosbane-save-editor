@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="swordGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff1744;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d32f2f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffeb3b;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0.2" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#1a1a1a" stroke="#ff1744" stroke-width="2"/>
+  
+  <!-- Glow effect -->
+  <circle cx="50" cy="50" r="48" fill="none" stroke="#ff6b35" stroke-width="1" opacity="0.5" filter="url(#glow)"/>
+  
+  <!-- Sword blade -->
+  <polygon points="50,8 55,45 50,72 45,45" fill="url(#swordGradient)" filter="url(#glow)"/>
+  
+  <!-- Sword edge highlights -->
+  <polygon points="50,8 52,45 50,72 51,45" fill="#ffeb3b" opacity="0.6"/>
+  
+  <!-- Sword guard (crossguard) -->
+  <rect x="35" y="54" width="30" height="6" fill="#c9a961" rx="2"/>
+  <rect x="35" y="54" width="30" height="3" fill="#ffd700" opacity="0.8" rx="1"/>
+  
+  <!-- Sword handle -->
+  <rect x="47" y="60" width="6" height="24" fill="#8b4513" rx="1"/>
+  <rect x="47" y="60" width="6" height="24" fill="#a0522d" opacity="0.6" rx="1"/>
+  
+  <!-- Handle grip lines -->
+  <line x1="47" y1="66" x2="53" y2="66" stroke="#654321" stroke-width="0.5" opacity="0.7"/>
+  <line x1="47" y1="72" x2="53" y2="72" stroke="#654321" stroke-width="0.5" opacity="0.7"/>
+  
+  <!-- Pommel -->
+  <circle cx="50" cy="86" r="2.5" fill="#c9a961"/>
+  <circle cx="50" cy="86" r="1.5" fill="#ffd700" opacity="0.8"/>
+  
+  <!-- Chaos energy aura around sword -->
+  <circle cx="50" cy="40" r="15" fill="url(#glowGradient)" opacity="0.3"/>
+  <circle cx="50" cy="40" r="15" fill="none" stroke="#ffeb3b" stroke-width="1" opacity="0.5" stroke-dasharray="5,5"/>
+  
+  <!-- Energy particles -->
+  <circle cx="45" cy="35" r="1.5" fill="#ffeb3b" opacity="0.8"/>
+  <circle cx="55" cy="32" r="1" fill="#ff6b35" opacity="0.7"/>
+  <circle cx="48" cy="25" r="1.2" fill="#ffeb3b" opacity="0.6"/>
+  <circle cx="52" cy="28" r="1" fill="#ff1744" opacity="0.7"/>
+</svg>
