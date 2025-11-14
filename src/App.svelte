@@ -144,7 +144,7 @@
   }
 
   .file-name {
-    font-size: 14px;
+    font-size: 1.2rem;
     color: #a0a0a0;
     word-break: break-word;
   }
