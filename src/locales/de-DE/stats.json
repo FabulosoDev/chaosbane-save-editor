@@ -1,6 +1,7 @@
 {
   "Armor": "Rüstung",
   "ArmorReductionTarget": "Rüstungsreduktion Ziel",
+  "Char_BonusGold": "Extra Gold",
   "Char_BonusRarity": "Seltenheitsbonus",
   "CooldownReduction": "Abklingzeitreduktion",
   "CriticHitBonus": "Kritischer Treffer Bonus",
