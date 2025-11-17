@@ -21,6 +21,7 @@
     "delete": "Delete",
     "close": "Close",
     "addItem": "Add Item",
+    "addPreset": "Add from Presets",
     "addStat": "Add Stat",
     "remove": "Remove",
     "level": "Level",
@@ -48,5 +49,11 @@
   },
   "modal": {
     "closeModal": "Close modal"
+  },
+  "itemPresets": {
+    "title": "Add Preconfigured Item",
+    "selectItem": "Select Item",
+    "noPresetsAvailable": "No presets available for this archetype",
+    "addItem": "Add Item"
   }
 }

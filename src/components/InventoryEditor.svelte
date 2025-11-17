@@ -4,7 +4,9 @@
   import { getRarityColor, getRarityName } from '../lib/rarityHelper.js'
   import { getItemDisplayName } from '../lib/itemNamesHelper.js'
   import { getUIString } from '../lib/localeManager.js'
+  import { hasPresetsForArchetype } from '../lib/itemPresetsHelper.js'
   import ItemDetails from './ItemDetails.svelte'
+  import ItemPresetsModal from './ItemPresetsModal.svelte'
   import Modal from './Modal.svelte'
 
   export let data
@@ -14,6 +16,7 @@
   let selectedItemIndex = null
   let searchQuery = ''
   let showDetailsModal = false
+  let showPresetsModal = false
   let availableStats = getAvailableStats()
 
   $: filteredItems = items.filter(item =>
@@ -67,7 +70,22 @@
     dispatch('change')
   }
 
-  import { createEventDispatcher } from 'svelte'
+  function handleAddPresetItem(event) {
+    const { item: presetItem } = event.detail
+
+    // Set proper menuIdx
+    presetItem['@_menuIdx'] = items.length
+
+    items = [...items, presetItem]
+    setInventoryItems(data, items)
+    selectedItemIndex = items.length - 1
+    showPresetsModal = false
+
+    if (window.innerWidth < 1024) {
+      showDetailsModal = true
+    }
+    dispatch('change')
+  }  import { createEventDispatcher } from 'svelte'
   const dispatch = createEventDispatcher()
 </script>
 
@@ -210,6 +228,25 @@
     transform: translateY(0);
   }
 
+  .add-button.preset-button {
+    background-color: #6a5acd;
+  }
+
+  .add-button.preset-button:hover {
+    background-color: #4a3a9d;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .button-group .add-button {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
   .empty-state {
     color: #666;
     text-align: center;
@@ -225,7 +262,14 @@
 
 <div class="inventory-editor">
   <div class="item-list">
-    <button class="add-button" on:click={handleAddItem}>+ {getUIString('common.addItem')}</button>
+    <div class="button-group">
+      <button class="add-button" on:click={handleAddItem}>+ {getUIString('common.addItem')}</button>
+      {#if hasPresetsForArchetype(archetype)}
+        <button class="add-button preset-button" on:click={() => (showPresetsModal = true)}>
+          ★ {getUIString('common.addPreset')}
+        </button>
+      {/if}
+    </div>
 
     <div class="search-bar">
       <input
@@ -290,3 +334,10 @@
     />
   {/if}
 </Modal>
+
+<ItemPresetsModal
+  isOpen={showPresetsModal}
+  {archetype}
+  on:close={() => (showPresetsModal = false)}
+  on:itemSelected={handleAddPresetItem}
+/>

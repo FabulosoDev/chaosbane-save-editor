@@ -21,6 +21,7 @@
     "delete": "Löschen",
     "close": "Schließen",
     "addItem": "Element hinzufügen",
+    "addPreset": "Aus Vorlagen hinzufügen",
     "addStat": "Statistik hinzufügen",
     "remove": "Entfernen",
     "level": "Stufe",
@@ -48,5 +49,11 @@
   },
   "modal": {
     "closeModal": "Modal schließen"
+  },
+  "itemPresets": {
+    "title": "Vorkonfiguriertes Element hinzufügen",
+    "selectItem": "Element auswählen",
+    "noPresetsAvailable": "Keine Vorlagen für diesen Archetyp verfügbar",
+    "addItem": "Element hinzufügen"
   }
 }
