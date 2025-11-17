@@ -521,18 +521,18 @@
     <div class="section-title">{getUIString('common.basicInformation')}</div>
 
     <div class="form-group">
-      <label>{getUIString('common.itemName')}</label>
-      <input type="text" bind:value={itemName} />
+      <label for="item-name">{getUIString('common.itemName')}</label>
+      <input id="item-name" type="text" bind:value={itemName} />
     </div>
 
     <div class="form-group">
-      <label>{getUIString('common.level')}</label>
-      <input type="number" bind:value={level} min="1" />
+      <label for="item-level">{getUIString('common.level')}</label>
+      <input id="item-level" type="number" bind:value={level} min="1" />
     </div>
 
     <div class="form-group">
-      <label>{getUIString('common.rarity')}</label>
-      <select bind:value={rarity}>
+      <label for="item-rarity">{getUIString('common.rarity')}</label>
+      <select id="item-rarity" bind:value={rarity}>
         <option value="0">Common</option>
         <option value="1">Rare</option>
         <option value="2">Legendary</option>
@@ -543,19 +543,8 @@
 
     {#if isGearItem}
       <div class="form-group">
-        <label>{getUIString('common.slot')}</label>
-        <select bind:value={slot}>
-          <option value="e_Head">{getSlotName('e_Head')}</option>
-          <option value="e_Arm">{getSlotName('e_Arm')}</option>
-          <option value="e_Chest">{getSlotName('e_Chest')}</option>
-          <option value="e_Leg">{getSlotName('e_Leg')}</option>
-          <option value="e_Boots">{getSlotName('e_Boots')}</option>
-          <option value="e_Weapon_L">{getSlotName('e_Weapon_L')}</option>
-          <option value="e_Weapon_R">{getSlotName('e_Weapon_R')}</option>
-          <option value="e_Ring_1">{getSlotName('e_Ring_1')}</option>
-          <option value="e_Ring_2">{getSlotName('e_Ring_2')}</option>
-          <option value="e_Amulet">{getSlotName('e_Amulet')}</option>
-        </select>
+        <label for="item-slot">{getUIString('common.slot')}</label>
+        <input id="item-slot" type="text" value={getSlotName(slot)} disabled />
       </div>
     {:else}
       <div class="form-group checkbox-group">
