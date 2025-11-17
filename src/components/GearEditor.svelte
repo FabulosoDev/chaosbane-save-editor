@@ -57,25 +57,6 @@
     }
   }
 
-  function handleAddItem() {
-    const newItem = {
-      '@_name': 'NEW_ITEM',
-      '@_rarity': '0',
-      '@_level': '1',
-      '@_slot': 'e_Head',
-      'Stats': {
-        stat: []
-      }
-    }
-    gearItems = [...gearItems, newItem]
-    updateGearPreset()
-    selectedItemIndex = gearItems.length - 1
-    if (window.innerWidth < 1024) {
-      showDetailsModal = true
-    }
-    dispatch('change')
-  }
-
   function updateGearPreset() {
     // Find the preset in the array and update it
     const presetIndex = gearPresets.findIndex(g => String(g['@_preset']) === String(selectedPreset))
@@ -137,34 +118,6 @@
 
   .search-bar input::placeholder {
     color: #666;
-  }
-
-  .add-button {
-    width: 100%;
-    padding: 12px 16px;
-    margin-bottom: 15px;
-    background-color: #4a9eff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-
-  .add-button:hover {
-    background-color: #2a7ed8;
-    transform: translateY(-1px);
-  }
-
-  .add-button:active {
-    transform: translateY(0);
   }
 
   .item-entry {
@@ -239,8 +192,6 @@
 
 <div class="gear-editor">
   <div class="item-list">
-    <button class="add-button" on:click={handleAddItem}>+ {getUIString('common.addItem')}</button>
-
     <div class="search-bar">
       <input
         type="text"
