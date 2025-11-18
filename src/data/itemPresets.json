@@ -1,7 +1,7 @@
 {
   "SLAYER_DWARF": [
     {
-      "name": "LOOT_RING_SLAYER_T1_02",
+      "name": "LOOT_RING_SLAYER_T1",
       "rarity": "0",
       "level": "1",
       "stats": {
@@ -16,7 +16,7 @@
       }
     },
     {
-      "name": "LOOT_AMULET_SLAYER_T1_02",
+      "name": "LOOT_AMULET_SLAYER_T1",
       "rarity": "0",
       "level": "1",
       "stats": {
@@ -33,7 +33,7 @@
   ],
   "WITCHHUNTER": [
     {
-      "name": "LOOT_RING_WITCHHUNTER_T1_02",
+      "name": "LOOT_RING_WITCHHUNTER_T1",
       "rarity": "0",
       "level": "1",
       "stats": {
@@ -48,7 +48,7 @@
       }
     },
     {
-      "name": "LOOT_AMULET_WITCHHUNTER_T1_02",
+      "name": "LOOT_AMULET_WITCHHUNTER_T1",
       "rarity": "0",
       "level": "1",
       "stats": {
@@ -65,7 +65,7 @@
   ],
   "WOOD_ELF": [
     {
-      "name": "LOOT_RING_WOOD_ELF_T1_02",
+      "name": "LOOT_RING_WOOD_ELF_T1",
       "rarity": "0",
       "level": "1",
       "stats": {
@@ -80,7 +80,7 @@
       }
     },
     {
-      "name": "LOOT_AMULET_WOOF_ELF_T1_02",
+      "name": "LOOT_AMULET_WOOF_ELF_T1",
       "rarity": "0",
       "level": "1",
       "stats": {
@@ -97,7 +97,7 @@
   ],
   "EMPIRE_SOLDIER": [
     {
-      "name": "LOOT_RING_IMPERIAL_SOLDIER_T1_02",
+      "name": "LOOT_RING_IMPERIAL_T1",
       "rarity": "0",
       "level": "1",
       "stats": {
@@ -112,7 +112,7 @@
       }
     },
     {
-      "name": "LOOT_AMULET_IMPERIAL_SOLDIER_T1_02",
+      "name": "LOOT_AMULET_IMPERIAL_T1",
       "rarity": "0",
       "level": "1",
       "stats": {
