@@ -62,5 +62,69 @@
         "MovementSpeed_Multiplier": "150"
       }
     }
+  ],
+  "WOOD_ELF": [
+    {
+      "name": "LOOT_RING_WOOD_ELF_T1_02",
+      "rarity": "0",
+      "level": "1",
+      "stats": {
+        "ArmorReductionTarget": "80.0",
+        "CooldownReduction": "80.0",
+        "CriticHitBonus": "1000000000.0",
+        "CriticHitChance": "80.0",
+        "Damage": "1000000000.0",
+        "Damage_DOT": "1000000000.0",
+        "StaminaCostReduction": "80.0",
+        "Thorn_Damage": "1000000000.0"
+      }
+    },
+    {
+      "name": "LOOT_AMULET_WOOF_ELF_T1_02",
+      "rarity": "0",
+      "level": "1",
+      "stats": {
+        "Armor": "1000000000.0",
+        "Char_BonusRarity": "1000000000.0",
+        "DamageDoneConvertedToLife": "1000000000.0",
+        "Damage_DOT_Resistance": "100",
+        "LifeRegenerationPerSecond": "100",
+        "MaximumLife": "1000000000.0",
+        "MaximumStamina": "1000000000.0",
+        "MovementSpeed_Multiplier": "150"
+      }
+    }
+  ],
+  "EMPIRE_SOLDIER": [
+    {
+      "name": "LOOT_RING_IMPERIAL_SOLDIER_T1_02",
+      "rarity": "0",
+      "level": "1",
+      "stats": {
+        "ArmorReductionTarget": "80.0",
+        "CooldownReduction": "80.0",
+        "CriticHitBonus": "1000000000.0",
+        "CriticHitChance": "80.0",
+        "Damage": "1000000000.0",
+        "Damage_DOT": "1000000000.0",
+        "StaminaCostReduction": "80.0",
+        "Thorn_Damage": "1000000000.0"
+      }
+    },
+    {
+      "name": "LOOT_AMULET_IMPERIAL_SOLDIER_T1_02",
+      "rarity": "0",
+      "level": "1",
+      "stats": {
+        "Armor": "1000000000.0",
+        "Char_BonusRarity": "1000000000.0",
+        "DamageDoneConvertedToLife": "1000000000.0",
+        "Damage_DOT_Resistance": "100",
+        "LifeRegenerationPerSecond": "100",
+        "MaximumLife": "1000000000.0",
+        "MaximumStamina": "1000000000.0",
+        "MovementSpeed_Multiplier": "150"
+      }
+    }
   ]
 }
